@@ -7,3 +7,6 @@
 
 - name: Install Remi repository
   yum: name=http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+
+- name: Install python module for Copy module
+  yum: name=libselinux-python

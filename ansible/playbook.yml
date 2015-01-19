@@ -4,3 +4,5 @@
   roles:
     - { role: common, tags: common  }
     - { role: apache, tags: apache  }
+    - { role: php, tags: php }
+    - { role: mysql, tags: mysql }

@@ -1,0 +1,8 @@
+---
+- name: Install MySQL
+  yum: enablerepo=remi name=mysql-server
+  notify: Start mysqld
+
+- name: Copy my.conf
+  copy: src=my.cnf dest=/etc/my.cnf
+

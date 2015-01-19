@@ -1,0 +1,7 @@
+---
+- name: Install phpmyadmin
+  yum: enablerepo=remi,remi-php55 name=phpmyadmin
+
+- name: Copy phpMyAdmin.conf file
+  copy: src=phpMyAdmin.conf dest="/etc/httpd/conf.d/phpMyAdmin.conf"
+  notify: httpd restart

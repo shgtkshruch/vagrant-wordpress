@@ -6,3 +6,4 @@
     - { role: apache, tags: apache  }
     - { role: php, tags: php }
     - { role: mysql, tags: mysql }
+    - { role: phpmyadmin, tags: phpmyadmin }

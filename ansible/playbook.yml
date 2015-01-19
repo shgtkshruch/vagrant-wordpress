@@ -3,3 +3,4 @@
   sudo: yes
   roles:
     - { role: common, tags: common  }
+    - { role: apache, tags: apache  }

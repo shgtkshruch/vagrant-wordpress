@@ -6,3 +6,26 @@
 - name: Copy my.conf
   copy: src=my.cnf dest=/etc/my.cnf
 
+- name: remove the test database
+  mysql_db: name=test state=absent
+  ignore_errors: yes
+
+- name: root password
+  mysql_user:
+    name=root
+    password={{ db_root_password}}
+  ignore_errors: yes
+
+- name: update mysql root password for all root accounts
+  mysql_user:
+    login_user=root
+    login_password={{ db_root_password }}
+    name=root
+    host={{ item }}
+    password={{ db_root_password}}
+  with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+  ignore_errors: yes
+

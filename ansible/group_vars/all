@@ -1,6 +1,13 @@
 ---
-title: test
-email: example@gmail.com
-dbname: root
-user: wordpress
-password: secret
+# db
+db_root_password: secret
+db_name: wordpress
+db_user: wordpress
+db_password: secret
+
+# WordPress
+vagrant_ip: 192.168.33.10
+wp_title: test
+wp_email: example@gmail.com
+wp_user: wordpress
+wp_password: secret

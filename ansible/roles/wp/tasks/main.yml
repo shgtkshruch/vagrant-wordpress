@@ -1,0 +1,37 @@
+---
+- name: ls
+  command: ls /var/www/html
+  register: ls
+
+- name: Download core WordPress files
+  command: wp core download --locale=ja
+  when: ls.stdout.find('index.php') == -1
+
+- name: Create Wordpress database
+  mysql_db:
+    login_user=root
+    login_password={{ db_root_password}}
+    name={{ db_name }}
+    state=present
+
+- name: Create Wordpress database user
+  mysql_user:
+    login_user=root
+    login_password={{ db_root_password}}
+    name={{ db_user }}
+    password={{ db_password }}
+    priv={{ db_name }}.*:ALL,GRANT
+    host='localhost'
+    state=present
+
+- name: ls
+  command: ls /var/www/html
+  register: ls
+
+- name: Generate a wp-config.php file.
+  command: wp core config --dbname={{ db_name }} --dbuser={{ db_user }} --dbpass={{ db_password }}
+  when: ls.stdout.find('wp-config.php') == -1
+
+- name: Create the WordPress tables in the database
+  command: wp core install --url={{ vagrant_ip }} --title={{ wp_title }} --admin_user={{ wp_user }} --admin_password={{ wp_password }} --admin_email={{ wp_email }}
+

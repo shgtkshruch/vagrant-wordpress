@@ -8,4 +8,4 @@
     - { role: mysql, tags: mysql }
     - { role: phpmyadmin, tags: phpmyadmin }
     - { role: wp-cli, tags: wp-cli }
-    - { role: wordpress, tags: wordpress }
+    - { role: wp, tags: wp, sudo: no}

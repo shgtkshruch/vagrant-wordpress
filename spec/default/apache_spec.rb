@@ -9,3 +9,7 @@ describe port('80') do
   it { should be_listening }
 end
 
+describe file('/var/www/html') do
+  it { should be_owned_by 'apache'}
+  it { should be_grouped_into 'apache'}
+end

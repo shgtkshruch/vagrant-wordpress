@@ -9,3 +9,6 @@
     - php-gd
     - php-opcache
 
+- name: Copy php.ini file
+  copy: src=php.ini dest=/etc/php.ini
+  notify: httpd restart

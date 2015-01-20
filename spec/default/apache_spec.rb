@@ -13,3 +13,7 @@ describe file('/var/www/html') do
   it { should be_owned_by 'apache'}
   it { should be_grouped_into 'apache'}
 end
+
+describe file('/etc/httpd/conf/httpd.conf') do
+  it { should contain 'SetOutputFilter DEFLATE' }
+end
